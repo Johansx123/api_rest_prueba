@@ -12,7 +12,6 @@ export const getEmployee = async (req, res) => {
             message: 'something goes weong'
         })    
     }
-   
 };
 
 export const getEmployees = async (req, res) => {
