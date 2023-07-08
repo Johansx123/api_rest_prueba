@@ -2,6 +2,7 @@ import { pool } from "../db.js";
 
 export const getEmployee = async (req, res) => {
     try {
+        res.send('Express vercel app response')
         const [rows] = await pool.query('SELECT * FROM employees WHERE id = ?', [req.params.id]);
         if(rows.length <= 0) return res.status(404).json({
             message: "Employee not found"
