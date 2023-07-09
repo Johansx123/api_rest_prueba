@@ -21,7 +21,7 @@ export const getEmployees = async (req, res) => {
         res.json(rows);
     } catch (error) {
         return res.status(500).json ({
-            message: 'something goes weong'
+            message: 'BRO DATABASE COMO QUE NO'
         })  
     }
    
