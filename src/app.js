@@ -7,10 +7,7 @@ import comments from './routes/comment.routes.js'
 const app = express(); // renombramos express por app
 app.use(express.json());
 
-app.use(services);
-app.use(indexRoutes);
-app.use(employessRoutes);
-app.use(comments)
+app.use(services,indexRoutes,employessRoutes,comments);
 
 app.use((req,res,next)=> {
     res.status(404).json({
