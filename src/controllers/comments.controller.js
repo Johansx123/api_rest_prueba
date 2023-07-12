@@ -71,10 +71,10 @@ export const Deletecomment = async(req, res) => {
     try {
         const id = req.params.id
          const [rows] = await pool.query('DELETE FROM u175710332_handymend.comments WHERE comment_id = ?', [id]);
-        // if(rows.affectedRows <= 0) return res.status(404).json({
-        //     message: "No se encontro comentario para eliminar"
-        // });
-        // res.sendStatus(204);
+        if(rows.affectedRows <= 0) return res.status(404).json({
+            message: "No se encontro comentario para eliminar"
+        });
+        res.sendStatus(204);
          res.json({rows});
      } catch (error) {
         return res.status(500).json ({
