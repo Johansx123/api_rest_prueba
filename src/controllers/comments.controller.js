@@ -49,3 +49,36 @@ export const CreateCommentcustom = async (req, res) => {
     }
    
 };
+
+
+export const Updatepathcomment = async (req, res) => {
+    try {
+        const {id} = req.params;
+    const {comment_customer, qualification} = req.body;
+    const [rows] = await pool.query('UPDATE u175710332_handymend.comments SET comment_customer = IFNULL(?), qualification = IFNULL(?) WHERE id = ?', [comment_customer, qualification, id]);
+    if(rows.affectedRows <= 0) return res.status(404).json({
+       message: "No se encontro comentario para actualizar"
+    });
+    console.log (rows);
+    } catch (error) {
+        return res.status(500).json ({
+            message: 'no se conecto con la base de datos'
+        }) 
+    }
+};
+
+export const Deletecomment = async(req, res) => {
+    try {
+        const id = req.params.id
+         const [rows] = await pool.query('DELETE FROM u175710332_handymend.comments WHERE id = ?', [id]);
+        // if(rows.affectedRows <= 0) return res.status(404).json({
+        //     message: "No se encontro comentario para eliminar"
+        // });
+        // res.sendStatus(204);
+         console.log(rows);
+     } catch (error) {
+        return res.status(500).json ({
+            message: 'no se conecto con la base de datos'
+        })
+     }
+};
