@@ -33,7 +33,8 @@ export const CreateComment = async (req, res) => {
 export const CreateCommentcustom = async (req, res) => {
     try {
         const {comment_customer, qualification, customer_name} = req.body;
-        const [rows] = await pool.query('INSERT INTO u175710332_handymend.comments(comment_customer, qualification,customer_name) VALUES (?, ?,?)',[comment_customer , qualification,customer_name]);
+        const [rows] = await pool.query('INSERT INTO u175710332_handymend.comments(comment_customer, qualification) VALUES (?, ?)',[comment_customer , qualification]);
+        await pool.query('INSERT INTO u175710332_handymend.customers(customer_name) VALUES ( ?)',[customer_name ]);
         res.send(
             {
             id: rows.insertId,
