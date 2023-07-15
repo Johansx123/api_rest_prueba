@@ -22,8 +22,16 @@ export const CreateRequestService = async (req, res) => {
 
 export const getRequest = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM u175710332_handymend.request_services');
-        res.json(rows);
+        const [rows] = await pool.query('SELECT rs.request_id, c.customer_id, c.customer_name, s.service_name FROM request_services rs JOIN customers c ON rs.customer_id = c.customer_id JOIN services s ON rs.service_id = s.service_id;');
+        const Rows = rows.map((rows) => {
+            return {
+            id: rows.request_id,
+            phone: rows.customer_id,
+            name: rows.customer_name,
+            service: rows.service_name,
+            };
+          });
+        res.json(Rows);
     } catch (error) {
         return res.status(500).json ({
             message: 'No se encontraron servicios'
