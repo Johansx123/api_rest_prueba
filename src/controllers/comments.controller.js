@@ -54,6 +54,7 @@ export const CreateCommentcustom = async (req, res) => {
             id: phone
             });
     } catch (error) {
+        console.log(error)
         res.send(error)
         return res.status(500).json ({
             message: 'ERROR al crear comentario'
