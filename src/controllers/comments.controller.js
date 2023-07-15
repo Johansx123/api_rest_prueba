@@ -3,7 +3,16 @@ import { pool } from "../db.js";
 export const getComments = async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM u175710332_handymend.comments');
-        res.json(rows);
+        const Rows = rows.map((rows) => {
+            return {
+              id: rows.comment_id,
+              date: rows.comment_date,
+              comment: rows.comment_customer,
+              score: rows.score,
+              name: rows.customer_name
+            };
+          });
+       res.json(Rows);
     } catch (error) {
         return res.status(500).json ({
             message: 'No se encontraron comentarios'
