@@ -2,7 +2,7 @@ import { pool } from "../db.js";
 
 export const getComments = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM u175710332_handymend.comments');
+        const [rows] = await pool.query('SELECT comment_id, comment_date, comment_customer, score, customer_name FROM comments c LEFT JOIN customers cu ON cu.customer_id = c.customer_id ;');
         const Rows = rows.map((rows) => {
             return {
               id: rows.comment_id,
@@ -14,6 +14,7 @@ export const getComments = async (req, res) => {
           });
        res.json(Rows);
     } catch (error) {
+        console.log(error)
         return res.status(500).json ({
             message: 'No se encontraron comentarios'
         })  
