@@ -3,7 +3,7 @@ import { pool } from "../db.js";
 export const CreateRequestService = async (req, res) => {
     try {
         const {customer_id, service_id} = req.body;
-        await pool.query('INSERT INTO u175710332_handymend.customers(customer_id) VALUES (?)',[customer_id ]);
+        await pool.query('INSERT INTO u175710332_handymend.customers(customer_id) VALUES (?,?)',[customer_id ]);
         const [rows] = await pool.query('INSERT INTO u175710332_handymend.request_services(customer_id, service_id) VALUES (?, ?)',[customer_id , service_id]);
         res.send(
             {
