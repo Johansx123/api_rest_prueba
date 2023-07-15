@@ -3,14 +3,15 @@ import { pool } from "../db.js";
 export const getServices = async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM services');
-        const Rows =  (
-            {
-            id: rows.service_id,
+        const Rows = rows.map((rows) => {
+            return {
+            id: rows.insertId,
             title: rows.service_name,
             icon: rows.icon,
             features: rows.features,
             color:rows.color
-            });
+            };
+          });
         res.json(Rows);
     } catch (error) {
         return res.status(500).json ({
