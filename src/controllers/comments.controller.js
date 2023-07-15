@@ -24,12 +24,12 @@ export const getComments = async (req, res) => {
 
 export const CreateComment = async (req, res) => {
     try {
-        const {comment_customer, score} = req.body;
-        const [rows] = await pool.query('INSERT INTO u175710332_handymend.comments(comment_customer, score) VALUES (?, ?)',[comment_customer , score]);
+        const {comment, score} = req.body;
+        const [rows] = await pool.query('INSERT INTO u175710332_handymend.comments(comment_customer, score) VALUES (?, ?)',[comment , score]);
         res.send(
             {
             id: rows.insertId,
-            comment: comment_customer,
+            comment: comment,
             score: score
             });
     } catch (error) {

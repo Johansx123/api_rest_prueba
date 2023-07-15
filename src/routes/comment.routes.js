@@ -3,8 +3,8 @@ import { getComments, CreateComment,CreateCommentcustom,Updatepathcomment,Delete
 
 const router = Router();
 router.get('/api/comments', getComments );
-router.post('/api/comments',  CreateCommentcustom);
-router.post('/api/commentcustom',CreateComment )
+router.post('/api/comments',  CreateComment);
+router.post('/api/commentcustom',CreateCommentcustom )
 router.patch('/api/comments/:id',Updatepathcomment)
 router.delete('/api/comments/:id',Deletecomment)
 export default router;
