@@ -11,7 +11,10 @@ import cors from 'cors';
 
 const app = express(); // renombramos express por app
 app.use(express.json());
-app.use(cors());
+app.use(cors(), {
+    cors: {
+       // origin:"https://test.handymend.app"
+}});
 app.use(services,indexRoutes,employessRoutes,comments,users,requestservices);
 
 app.use((req,res,next)=> {
