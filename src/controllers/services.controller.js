@@ -5,7 +5,7 @@ export const getServices = async (req, res) => {
         const [rows] = await pool.query('SELECT * FROM services');
         const Rows = rows.map((rows) => {
             return {
-            id: rows.insertId,
+            id: rows.id,
             title: rows.service_name,
             icon: rows.icon,
             features: rows.features,
