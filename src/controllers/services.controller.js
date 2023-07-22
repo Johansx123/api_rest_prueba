@@ -12,6 +12,7 @@ export const getServices = async (req, res) => {
             color:rows.color
             };
           });
+          console.log(Rows.id)
         res.json(Rows);
     } catch (error) {
         return res.status(500).json ({
