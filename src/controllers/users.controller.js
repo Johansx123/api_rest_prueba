@@ -5,9 +5,7 @@ export const getUsers = async (req, res) => {
         const [rows] = await pool.query('SELECT * FROM u175710332_handymend.users');
         res.json(rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'No se encontraron usuarios'
-        })  
+        return res.status(500).send(error)
     }
    
 };
@@ -23,9 +21,7 @@ export const CreateUsers = async (req, res) => {
             last_name: last_name
             });
     } catch (error) {
-        return res.status(500).json ({
-            message: 'ERROR al crear Usuario'
-        })  
+        return res.status(500).send(error)
     }
    
 };

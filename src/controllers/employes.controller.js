@@ -9,9 +9,7 @@ export const getEmployee = async (req, res) => {
         });
         console.log(rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'something goes weong'
-        })    
+        return res.status(500).send(error)   
     }
 };
 
@@ -20,9 +18,7 @@ export const getEmployees = async (req, res) => {
         const [rows] = await pool.query('SELECT * FROM employees');
         res.json(rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'BRO DATABASE COMO QUE NO'
-        })  
+        return res.status(500).send(error)  
     }
    
 };
@@ -38,9 +34,7 @@ export const CreateEmployees = async (req, res) => {
             salary: salary
             });
     } catch (error) {
-        return res.status(500).json ({
-            message: 'something goes weong'
-        })  
+        return res.status(500).send(error) 
     }
    
 };
@@ -55,9 +49,7 @@ export const UpdateEmployees = async (req, res) => {
     });
     console.log (rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'something goes weong'
-        })  
+        return res.status(500).send(error) 
     }
     
 };
@@ -72,9 +64,7 @@ export const UpdatepathEmployees = async (req, res) => {
     });
     console.log (rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'something goes weong'
-        }) 
+        return res.status(500).send(error)
     }
 };
 
@@ -87,9 +77,7 @@ export const DeleteEmployees = async(req, res) => {
         res.sendStatus(204);
         console.log(rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'something goes weong'
-        }) 
+        return res.status(500).send(error)
     }
 };
 

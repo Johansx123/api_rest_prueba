@@ -15,9 +15,7 @@ export const getServices = async (req, res) => {
           console.log(Rows.id)
         res.json(Rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'No se encontro servicios'
-        })  
+        return res.status(500).send(error) 
     }
    
 };
@@ -35,10 +33,7 @@ export const CreateService = async (req, res) => {
             color:color
             });
     } catch (error) {
-        console.log(error)
-        return res.status(500).json ({
-            message: 'ERROR al crear comentario'
-        })  
+        return res.status(500).send(error) 
     }
    
 };

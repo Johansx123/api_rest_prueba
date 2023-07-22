@@ -13,9 +13,7 @@ export const CreateRequestService = async (req, res) => {
             service: service
             });
     } catch (error) {
-        return res.status(500).json ({
-            message: 'ERROR al crear el servicio'
-        })  
+        return res.status(500).send(error)
     }
    
 };
@@ -33,9 +31,7 @@ export const getRequest = async (req, res) => {
           });
         res.json(Rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'No se encontraron servicios'
-        })  
+        return res.status(500).send(error)
     }
    
 };

@@ -14,10 +14,7 @@ export const getComments = async (req, res) => {
           });
        res.json(Rows);
     } catch (error) {
-        console.log(error)
-        return res.status(500).json ({
-            message: 'No se encontraron comentarios'
-        })  
+        return res.status(500).send(error)
     }
    
 };
@@ -33,9 +30,7 @@ export const CreateComment = async (req, res) => {
             score: score
             });
     } catch (error) {
-        return res.status(500).json ({
-            message: 'ERROR al crear comentario'
-        })  
+        return res.status(500).send(error)
     }
    
 };
@@ -54,11 +49,7 @@ export const CreateCommentcustom = async (req, res) => {
             id: phone
             });
     } catch (error) {
-        console.log(error)
-        res.send(error)
-        return res.status(500).json ({
-            message: 'ERROR al crear comentario'
-        })  
+        return res.status(500).send(error)
     }
    
 };
@@ -74,9 +65,7 @@ export const Updatepathcomment = async (req, res) => {
     });
     console.log (rows);
     } catch (error) {
-        return res.status(500).json ({
-            message: 'no se conecto con la base de datos'
-        }) 
+        return res.status(500).send(error)
     }
 };
 
@@ -92,8 +81,6 @@ export const Deletecomment = async(req, res) => {
         res.sendStatus(204);
          res.json({rows});
      } catch (error) {
-        return res.status(500).json ({
-            message: 'no se conecto con la base de datos'
-        })
+        return res.status(500).send(error)
      }
 };
